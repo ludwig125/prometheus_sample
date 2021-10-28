@@ -1,0 +1,17 @@
+{
+	"ulid": "01FK47G81JM0A25CW89XMXCKA9",
+	"minTime": 1635368530648,
+	"maxTime": 1635372000000,
+	"stats": {
+		"numSamples": 950,
+		"numSeries": 50,
+		"numChunks": 50
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01FK47G81JM0A25CW89XMXCKA9"
+		]
+	},
+	"version": 1
+}
