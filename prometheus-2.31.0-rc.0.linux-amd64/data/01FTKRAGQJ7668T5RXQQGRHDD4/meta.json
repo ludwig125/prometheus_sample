@@ -1,0 +1,17 @@
+{
+	"ulid": "01FTKRAGQJ7668T5RXQQGRHDD4",
+	"minTime": 1643407202768,
+	"maxTime": 1643414400000,
+	"stats": {
+		"numSamples": 6067,
+		"numSeries": 106,
+		"numChunks": 118
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01FTKRAGQJ7668T5RXQQGRHDD4"
+		]
+	},
+	"version": 1
+}
