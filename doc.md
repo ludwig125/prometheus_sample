@@ -5,6 +5,21 @@ Pushgateway の使い方について理解するためにサンプルを書き�
 最初に通常の Server のメトリクスを Prometheus から取得する場合を確認して、
 その後 Batch の場合の Pushgateway の利用方法を見てみました。
 
+# 環境
+
+環境は WSL 上の Ubuntu です
+
+```
+$cat /etc/os-release
+NAME="Ubuntu"
+VERSION="20.04.3 LTS (Focal Fossa)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 20.04.3 LTS"
+VERSION_ID="20.04"
+略
+```
+
 # Server の場合
 
 ## Server のサンプルコード
@@ -207,6 +222,8 @@ ts=2021-10-29T21:50:55.759Z caller=level.go:63 level=info build_context="(go=go1
 ts=2021-10-29T21:50:55.760Z caller=level.go:63 level=info listen_address=:9091
 ts=2021-10-29T21:50:55.761Z caller=level.go:63 level=info msg="TLS is disabled." http2=false
 ```
+
+pushgateway の Port は`9091`となっています。
 
 ## Batch のサンプルコード（Add）
 
@@ -568,7 +585,7 @@ http://localhost:9091 の Pushgateway の UI は以下のようになりまし�
 ![image](https://user-images.githubusercontent.com/18366858/151680114-1e2697e7-95cc-4524-8552-df1eab828d7d.png)
 
 ちなみに、`batch_missing_count_total`は、0 と表示されました。
-よって、特にこだわりがなければ一律で`MustRegister` を使った最初に登録したほうが漏れがなくいいかも知れません。
+よって、特にこだわりがなければ一律で`MustRegister` を使って最初に登録する方法でも良いかも知れません。
 
 ![image](https://user-images.githubusercontent.com/18366858/152610725-8270aa0a-0946-4674-b0d4-b0963fa388ee.png)
 
@@ -576,8 +593,8 @@ http://localhost:9091 の Pushgateway の UI は以下のようになりまし�
 
 以下、参考にさせていただいた資料です。
 
-https://pkg.go.dev/github.com/prometheus/client_golang/prometheus/push
 https://github.com/prometheus/pushgateway
+https://pkg.go.dev/github.com/prometheus/client_golang/prometheus/push
 https://stackoverflow.com/questions/37611754/how-to-push-metrics-to-prometheus-using-client-golang
 https://kobatako.hatenablog.com/entry/2020/01/07/231108
 https://uzimihsr.github.io/post/2020-04-30-pushgateway/
