@@ -31,6 +31,10 @@ var (
 		Name: "batch_error_count_total",
 		Help: "Counter of execute resulting in an error.",
 	})
+	missingCount = promauto.NewCounter(prometheus.CounterOpts{
+		Name: "batch_missing_count_total",
+		Help: "Counter of execute resulting in an missing.",
+	})
 )
 
 func main() {
@@ -39,7 +43,7 @@ func main() {
 	var errors int
 
 	registry := prometheus.NewRegistry()
-	registry.MustRegister(duration, executeCount)
+	registry.MustRegister(duration, executeCount, okCount, normalCount, errorCount, missingCount)
 
 	pusher := push.New("http://localhost:9091", "my_batch_job").Gatherer(registry)
 
@@ -68,9 +72,6 @@ func main() {
 
 	fmt.Printf("ok: %d, normal: %d, error: %d\n", oks, normals, errors)
 	if err := pusher.
-		Collector(okCount).
-		Collector(normalCount).
-		Collector(errorCount).
 		Push(); err != nil {
 		fmt.Println(err)
 	}
