@@ -5,6 +5,10 @@ Pushgateway の使い方について理解するためにサンプルを書き�
 最初に通常の Server のメトリクスを Prometheus から取得する場合を確認して、
 その後 Batch の場合の Pushgateway の利用方法を見てみました。
 
+コードは以下に置きました
+
+https://github.com/ludwig125/prometheus_sample
+
 # 環境
 
 環境は WSL 上の Ubuntu です
